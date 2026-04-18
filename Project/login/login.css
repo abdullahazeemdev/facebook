@@ -1,0 +1,141 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* better than height */
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    max-width: 1000px;
+    width: 100%;
+}
+
+/* LEFT */
+.left{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.left h1 {
+   font-size: 48px;
+   font-weight: 700;
+   color: #1877f2;
+}
+
+.left p {
+    font-size: 20px;
+    color: #1c1e21;
+}
+
+/* RIGHT */
+.right{
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    justify-content: center;
+    align-items: center;
+}
+
+.right form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+form input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+form button {
+    padding: 12px;
+    background-color: #1877f2;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.right hr{
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 15px 0;
+    width: 100%;
+}
+
+.right a {
+    color: #1877f2;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.right a:hover {
+    text-decoration: underline;
+}
+
+#create-account {
+    background-color: #42b72a;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#create-account:hover {
+    background-color: #36a420;
+}
+
+
+ /* RESPONSIVE  */
+@media (max-width: 768px) {
+    
+    .container {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .left {
+        width: 100%;
+        align-items: center;
+    }
+
+    .left h1 {
+        font-size: 36px;
+    }
+
+    .left p {
+        font-size: 16px;
+    }
+
+    .right {
+        width: 100%;
+        max-width: 350px;
+    }
+}
