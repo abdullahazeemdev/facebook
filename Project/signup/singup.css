@@ -6,7 +6,7 @@
 }
 
 .container{
-    margin: 24px 255px 0;
+    margin: 24px 310px 0;
     padding: 0 100px;
     display: flex;
     flex-direction: column;
@@ -58,7 +58,56 @@
 }
 
 .heading h2{
-    font-size: 26px;
+    font-size: normal;
     font-weight:normal ;
     margin-bottom: 5px;
+}
+
+.name label{
+    display: block;
+    font-size: large;
+    font-weight: 540;
+    margin-bottom: 7px;
+}
+
+.input-name{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.input-name input{
+    padding: 18px 15px;
+    width: 265px;
+    font-size: 18px;
+    border-radius: 15px;
+    border: 1px solid rgba(128, 128, 128, 0.518);
+}
+.input-name input:hover{
+  border: 1px solid black;
+}
+
+.input-name input:focus{
+    border: 1px solid rgba(0, 0, 0, 0.541);
+}
+
+.DOB h2{
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.dob-selects{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+}
+
+.dob-selects select{
+    padding: 20px 10px;
+    width: 190px;
+    border-radius: 10px;
+    font-size: 16px;
 }

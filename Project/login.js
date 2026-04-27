@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     timer: 1500,
                     showConfirmButton: false
                 }).then(() => {
-                    window.location.href = "../dashboard/index.html";
+                    window.location.href = "./dashboard/index.html";
                 });
             }
         });
@@ -38,8 +38,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // CREATE ACCOUNT
     if (signupBtn) {
         signupBtn.addEventListener("click", function() {
-            window.location.href = "../signup/index.html";
+            window.location.href = "./signup/index.html";
         });
+        console.log("button clicked");
     }
 
 });

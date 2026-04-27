@@ -1,30 +1,64 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="singup.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="singup.css" />
     <title>Create-Account</title>
-</head>
-<body>
-     <!-- <h3>Welcome to the Create Account Page!</h3> -->
-<div class="container">
-    <a href="../index.html" class="back-login">
-       <i class="fa-solid fa-less-than"></i></a>
-    <div class="meta-logo">
+  </head>
+  <body>
+    <!-- <h3>Welcome to the Create Account Page!</h3> -->
+    <div class="container">
+      <a href="../index.html" class="back-login">
+        <i class="fa-solid fa-less-than"></i
+      ></a>
+      <div class="meta-logo">
         <i class="fa-brands fa-meta"></i>
         <span>Meta</span>
-    </div>
+      </div>
 
-    <div class="heading">
+      <div class="heading">
         <h2>Get started on Facebook</h2>
-        <p>Create an account to connect with friends, family and communities of people who share your interests.</p>
-    </div>
+        <p>
+          Create an account to connect with friends, family and communities of
+          people who share your interests.
+        </p>
+      </div>
+
+      <div class="name">
+        <label>Name</label>
+        <div class="input-name">
+          <input type="text" placeholder="First Name" />
+          <input type="text" placeholder="Surname" />
+        </div>
+      </div>
+
+      <div class="DOB">
+
+  <h2>
+    Date of birth <i class="fa-regular fa-circle-question"></i>
+  </h2>
+
+  <div class="dob-selects">
+    <select name="Day" id="day"></select>
+
+    <select class="month" id="month"></select>
+
+    <select class="year" id="year"></select>
+    
+  </div>
 </div>
 
-     <!-- JS file -->
-    
-    <script src="signup.js"></script>
-</body>
+
+  <script src="singup.js"></script>
+  </body>
 </html>
+
+
