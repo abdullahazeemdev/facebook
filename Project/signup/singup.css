@@ -6,7 +6,7 @@
 }
 
 .container{
-    margin: 24px 310px 0;
+    margin: 24px 300px 0;
     padding: 0 100px;
     display: flex;
     flex-direction: column;
@@ -88,11 +88,11 @@
 }
 
 .input-name input:focus{
-    border: 1px solid rgba(0, 0, 0, 0.541);
+    border: 1px solid rgba(0, 0, 0, 0);
 }
 
 .DOB h2{
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 500;
     margin-bottom: 10px;
 }
@@ -110,4 +110,41 @@
     width: 190px;
     border-radius: 10px;
     font-size: 16px;
+    border: 1px solid rgba(128, 128, 128, 0.518);
+  }
+
+  /* gender */
+ .gender h2{
+    margin: 10px 0px;
+    font-weight: 500;
+ }
+
+ .gender select{
+    padding: 20px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-size: 18px;
+    border: 1px solid rgba(128, 128, 128, 0.518);
+    border-radius: 10px;
+ }
+
+ /* email */
+
+ .email h2{
+    font-weight:500;
+    margin: 10px 0;
+ }
+
+ .email input{
+    padding:20px 10px; 
+    width: 100%;
+    border:1px solid rgba(128, 128, 128, 0.518);
+    font-size: 18px;
+    border-radius: 10px;
+}
+ 
+h2{
+    margin: 15px 0px;
 }
