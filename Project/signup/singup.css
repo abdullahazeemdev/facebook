@@ -106,7 +106,7 @@
 }
 
 .dob-selects select{
-    padding: 20px 10px;
+    padding: 20px 15px;
     width: 190px;
     border-radius: 10px;
     font-size: 16px;
@@ -120,7 +120,7 @@
  }
 
  .gender select{
-    padding: 20px 10px;
+    padding: 20px 15px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -138,13 +138,107 @@
  }
 
  .email input{
-    padding:20px 10px; 
+    padding:20px 15px; 
     width: 100%;
     border:1px solid rgba(128, 128, 128, 0.518);
     font-size: 18px;
     border-radius: 10px;
 }
- 
+/*  
 h2{
     margin: 15px 0px;
+} */
+
+.learn p{
+ margin-top: 5px;
+ font-weight: 300;
 }
+
+.learn span{
+    color: rgb(0, 110, 255);
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.learn span:hover{
+    text-decoration: underline;
+    
+}
+
+.password input{
+     padding:20px 15px; 
+    width: 100%;
+    border:1px solid rgba(128, 128, 128, 0.518);
+    font-size: 18px;
+    border-radius: 10px;
+}
+.password h2{
+ font-weight:500;
+ margin-bottom: 10px ;
+}
+
+.para{
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+    margin-top: 17px;
+}
+
+.para p{
+    font-size: 17px;
+    font-weight: 300;
+}
+.para p span{
+    color: rgb(0, 110, 255);
+    font-size: 19px;
+    cursor: pointer;
+}
+
+.para p span:hover{
+      text-decoration: underline;
+}
+.submit{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap:15px;
+}
+#submit{
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-size: 17px;
+    background-color:rgb(0, 110, 255);
+    border: none;
+    color: white;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+}
+#submit:hover{
+    background-color:rgb(2, 95, 218); ;
+}
+
+#back{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-size: 17px;
+    border-radius: 20px;
+    border: 1px solid rgb(235, 234, 234);
+    background-color: white;
+
+
+}
+
+#back:hover{
+    background-color: rgb(235, 234, 234);
+    cursor: pointer;
+}
+
