@@ -15,97 +15,161 @@
   </head>
   <body>
     <!-- <h3>Welcome to the Create Account Page!</h3> -->
-    <div class="container">
-      <a href="../index.html" class="back-login">
-        <i class="fa-solid fa-less-than"></i
-      ></a>
-      <div class="meta-logo">
-        <i class="fa-brands fa-meta"></i>
-        <span>Meta</span>
-      </div>
+   <form class="container">
 
-      <div class="heading">
-        <h2>Get started on Facebook</h2>
-        <p>
-          Create an account to connect with friends, family and communities of
-          people who share your interests.
-        </p>
-      </div>
+  <a href="../login.html" class="back-login">
+    <i class="fa-solid fa-less-than"></i>
+  </a>
 
-      <div class="name">
-        <label>Name</label>
-        <div class="input-name">
-          <input type="text" placeholder="First Name" />
-          <input type="text" placeholder="Surname" />
-        </div>
-      </div>
+  <div class="meta-logo">
+    <i class="fa-brands fa-meta"></i>
+    <span>Meta</span>
+  </div>
 
-      <div class="DOB">
+  <div class="heading">
+    <h2>Get started on Facebook</h2>
+    <p>Create an account to connect with friends...</p>
+  </div>
 
-        <h2>
-          Date of birth <i class="fa-regular fa-circle-question"></i>
-        </h2>
-
-       <div class="dob-selects">
-        <select name="Day" id="day">
-          <option value="" disabled selected>Date</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-        </select>
-
-        <select class="month" id="month" >
-          <option value="" disabled selected> Month</option>
-          <option value="jan">jan</option>
-          <option value="feb">feb</option>
-          <option value="mar">mar</option>
-        </select>
-
-        <select class="year" id="year">
-          <option value="" disabled selected>year</option>
-          <option value="2000">2000</option>
-          <option value="2001">2001</option>
-          <option value="2002">2002</option>
-        </select>
-        </div>
-      </div>
-      
-      <div class="gender">
-        <h2> gender <i class="fa-regular fa-circle-question"></i></h2>
-        <select>
-          <option value="" disabled selected>select your gender</option>
-          <option value="" >Male</option>
-          <option value="">Female</option>
-        </select>
-      </div>
-
-      <div class="email">
-        <h2>Mobile number or email address</h2>
-        <input type="text" name="" id="email" placeholder="Mobile number or email address">
-      </div>
-
-      <div class="learn">
-        <p>You may receive notifications from us. <span>learn why we ask for your content information</span></p>
-      </div>
-
-      <div class="password">
-        <h2>password</h2>
-        <input type="password" id="password" placeholder="password">
-      </div>
-
-      <div class="para">
-        <p>People who use our service may have uploaded your contact information to Facebook.<span>learn more</span> .</p>
-        <p>By tapping Submit, you agree to create an account and to Facebook's <span>Terms,
-          Privacy Policy </span> and <span>Cookies Policy</span></p>
-        <p>The <span>Privacy Policy</span> describes the ways we can use the information we collect when you create an account. For example, we use this information to provide, personalise and improve our products, including ads.</p>
-      </div>
-
-      <div class="submit"> 
-        <Button id="submit">submit</Button>
-        <button id="back">I already have an account </button>
-      </div>
-    
+  <!-- NAME -->
+  <div class="name">
+    <label>Name</label>
+    <div class="input-name">
+      <input type="text" placeholder="First Name" id="first-name" />
+      <input type="text" placeholder="Surname" id="last-name" />
     </div>
+  </div>
+
+  <!-- DOB -->
+  <div class="DOB">
+    <h2>Date of birth</h2>
+    <div class="dob-selects" id="dob">
+
+      <!-- date -->
+      <select id="date">
+  <option selected disabled>Day</option>
+  <option>1</option>
+  <option>2</option>
+  <option>3</option>
+  <option>4</option>
+  <option>5</option>
+  <option>6</option>
+  <option>7</option>
+  <option>8</option>
+  <option>9</option>
+  <option>10</option>
+  <option>11</option>
+  <option>12</option>
+  <option>13</option>
+  <option>14</option>
+  <option>15</option>
+  <option>16</option>
+  <option>17</option>
+  <option>18</option>
+  <option>19</option>
+  <option>20</option>
+  <option>21</option>
+  <option>22</option>
+  <option>23</option>
+  <option>24</option>
+  <option>25</option>
+  <option>26</option>
+  <option>27</option>
+  <option>28</option>
+  <option>29</option>
+  <option>30</option>
+  <option>31</option>
+      </select>
+<!-- month -->
+     <select id="month">
+  <option selected disabled>Month</option>
+  <option>January</option>
+  <option>February</option>
+  <option>March</option>
+  <option>April</option>
+  <option>May</option>
+  <option>June</option>
+  <option>July</option>
+  <option>August</option>
+  <option>September</option>
+  <option>October</option>
+  <option>November</option>
+  <option>December</option>
+     </select>
+
+     <!-- year -->
+      <select id="year">
+  <option selected disabled>Year</option>
+  <option>2026</option>
+  <option>2025</option>
+  <option>2024</option>
+  <option>2023</option>
+  <option>2022</option>
+  <option>2021</option>
+  <option>2020</option>
+  <option>2019</option>
+  <option>2018</option>
+  <option>2017</option>
+  <option>2016</option>
+  <option>2015</option>
+  <option>2010</option>
+  <option>2009</option>
+  <option>2008</option>
+  <option>2007</option>
+  <option>2006</option>
+  <option>2005</option>
+  <option>2004</option>
+  <option>2003</option>
+  <option>2002</option>
+  <option>2001</option>
+  <option>2000</option>
+  <option>1990</option>
+  <option>1980</option>
+  <option>1970</option>
+  <option>1960</option>
+  <option>1950</option>
+  <option>1940</option>
+  <option>1930</option>
+  <option>1920</option>
+  <option>1910</option>
+  <option>1900</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- GENDER -->
+  <div class="gender" >
+    <h2>Gender</h2>
+    <select id="gender">
+      <option disabled selected>select your gender</option>
+      <option>Male</option>
+      <option>Female</option>
+      <option>Custom</option>
+    </select>
+  </div>
+
+  <!-- EMAIL -->
+  <div class="email">
+    <label for="email">Email</label>
+    <input type="text" id="email" placeholder="Mobile number or email address" autocomplete="username">
+  </div>
+
+  <!-- PASSWORD -->
+  <div class="password">
+    <label for="password">Password </label>
+    <div class="password-box">
+        <input id="password" type="password" placeholder="Password" autocomplete="new-password" >
+        <i class="fa-solid fa-eye" id="eyeIcon"></i>
+    </div>
+  </div>
+
+  <!-- BUTTONS -->
+  <div class="submit">
+    <button type="submit" id="submit">Submit</button>
+    <button type="button" id="back">I already have an account</button>
+  </div>
+
+</form>
 
 
     <br>
@@ -116,7 +180,9 @@
     <br>
     
 
-
+     
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="singup.js"></script>
   </body>
 </html>

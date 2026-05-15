@@ -5,27 +5,33 @@
     font-family: Arial, sans-serif;
 }
 
+body{
+    background-color: #fff;
+}
+
 .container{
-    margin: 24px 300px 0;
-    padding: 0 100px;
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 0 20px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 18px;
 }
+
+/* back button */
 
 .back-login{
     display: flex;
     align-items: center;
     gap: 12px;
     font-size: 15px;
-    margin-top: 17px;
     color: rgb(104, 104, 104);
     text-decoration: none;
-    margin-left: -10px;
+    width: fit-content;
 }
 
 .back-login i{
-    color:rgb(104, 104, 104) ;
+    color: rgb(104, 104, 104);
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -33,212 +39,249 @@
     align-items: center;
     justify-content: center;
     font-size: 16px;
-    margin-bottom: 0%;
+    transition: 0.3s;
 }
 
 .back-login i:hover{
-     
-    background-color:rgba(104, 104, 104, 0.242); 
+    background-color: rgba(104, 104, 104, 0.15);
 }
+
+/* meta logo */
 
 .meta-logo{
     display: flex;
     align-items: center;
     gap: 7px;
-
 }
 
 .meta-logo i{
-    font-size: 15px;
+    font-size: 16px;
     color: rgb(0, 110, 255);
 }
 
-.meta-logo > span{
-    font-size: 20px ;
+.meta-logo span{
+    font-size: 20px;
+    font-weight: 600;
 }
+
+/* heading */
 
 .heading h2{
-    font-size: normal;
-    font-weight:normal ;
-    margin-bottom: 5px;
+    font-size: 34px;
+    font-weight: 700;
+    margin-bottom: 6px;
 }
 
-.name label{
+.email label,
+.password label{
+   font-size: 18px;
+    color: gray;
+    padding-bottom: 10px;
+}
+
+.heading p{
+    font-size: 17px;
+    color: gray;
+}
+
+/* labels */
+
+.name label,
+.DOB h2,
+.gender h2,
+.email h2,
+.password h2{
     display: block;
-    font-size: large;
-    font-weight: 540;
-    margin-bottom: 7px;
-}
-
-.input-name{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.input-name input{
-    padding: 18px 15px;
-    width: 265px;
     font-size: 18px;
-    border-radius: 15px;
-    border: 1px solid rgba(128, 128, 128, 0.518);
-}
-.input-name input:hover{
-  border: 1px solid black;
-}
-
-.input-name input:focus{
-    border: 1px solid rgba(0, 0, 0, 0);
-}
-
-.DOB h2{
-    font-size: 20px;
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: 10px;
 }
 
+/* input name */
+
+.input-name{
+    display: flex;
+    gap: 12px;
+}
+
+.input-name input{
+    width: 100%;
+}
+
+/* inputs */
+
+input,
+select{
+    padding: 17px 15px;
+    width: 100%;
+    font-size: 17px;
+    border-radius: 12px;
+    border: 1px solid rgba(128, 128, 128, 0.4);
+    outline: none;
+    transition: 0.2s;
+    background-color: white;
+}
+
+input:hover,
+select:hover{
+    border-color: black;
+}
+
+input:focus,
+select:focus{
+    border: 2px solid rgb(0, 110, 255);
+}
+
+/* dob */
+
 .dob-selects{
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     gap: 10px;
-
 }
 
 .dob-selects select{
-    padding: 20px 15px;
-    width: 190px;
-    border-radius: 10px;
-    font-size: 16px;
-    border: 1px solid rgba(128, 128, 128, 0.518);
-  }
-
-  /* gender */
- .gender h2{
-    margin: 10px 0px;
-    font-weight: 500;
- }
-
- .gender select{
-    padding: 20px 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    font-size: 18px;
-    border: 1px solid rgba(128, 128, 128, 0.518);
-    border-radius: 10px;
- }
-
- /* email */
-
- .email h2{
-    font-weight:500;
-    margin: 10px 0;
- }
-
- .email input{
-    padding:20px 15px; 
-    width: 100%;
-    border:1px solid rgba(128, 128, 128, 0.518);
-    font-size: 18px;
-    border-radius: 10px;
+    flex: 1;
 }
-/*  
-h2{
-    margin: 15px 0px;
-} */
+
+/* gender */
+
+.gender select{
+    cursor: pointer;
+}
+
+/* learn */
 
 .learn p{
- margin-top: 5px;
- font-weight: 300;
+    margin-top: 6px;
+    font-size: 15px;
+    color: #555;
+    line-height: 22px;
 }
 
 .learn span{
     color: rgb(0, 110, 255);
-    font-size: 18px;
     cursor: pointer;
 }
 
 .learn span:hover{
     text-decoration: underline;
-    
 }
 
-.password input{
-     padding:20px 15px; 
-    width: 100%;
-    border:1px solid rgba(128, 128, 128, 0.518);
-    font-size: 18px;
-    border-radius: 10px;
-}
-.password h2{
- font-weight:500;
- margin-bottom: 10px ;
-}
+/* para */
 
 .para{
     display: flex;
     flex-direction: column;
-    gap: 17px;
-    margin-top: 17px;
+    gap: 15px;
 }
 
 .para p{
-    font-size: 17px;
-    font-weight: 300;
+    font-size: 15px;
+    color: #555;
+    line-height: 24px;
 }
+
 .para p span{
     color: rgb(0, 110, 255);
-    font-size: 19px;
     cursor: pointer;
 }
 
 .para p span:hover{
-      text-decoration: underline;
+    text-decoration: underline;
 }
+
+/* password */
+
+.password-box{
+    position: relative;
+    width: auto;
+}
+
+.password-box input{
+    padding: 17px 15px;
+    width: 100%;
+    font-size: 17px;
+    border-radius: 12px;
+    border: 1px solid rgba(128, 128, 128, 0.4);
+    outline: none;
+    transition: 0.2s;
+    background-color: white;
+}
+
+.password-box input:hover{
+     border-color: black;
+}
+
+.password-box input:focus{
+    border: 2px solid rgb(0, 110, 255);
+}
+
+.password-box i{
+   position: absolute;
+   right: 10px;
+   top: 16px;
+   cursor: pointer;
+}
+
+/* buttons */
+
 .submit{
-    margin-top: 20px;
+    margin-top: 10px;
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
-    gap:15px;
+    gap: 14px;
 }
+
 #submit{
     width: 100%;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    padding: 10px;
+    padding: 14px;
     font-size: 17px;
-    background-color:rgb(0, 110, 255);
+    background-color: rgb(0, 110, 255);
     border: none;
     color: white;
-    border-radius: 20px;
+    border-radius: 30px;
     font-weight: 600;
     cursor: pointer;
+    transition: 0.3s;
 }
+
 #submit:hover{
-    background-color:rgb(2, 95, 218); ;
+    background-color: rgb(2, 95, 218);
 }
 
 #back{
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 100%;
+    padding: 14px;
     font-size: 17px;
-    border-radius: 20px;
-    border: 1px solid rgb(235, 234, 234);
+    border-radius: 30px;
+    border: 1px solid rgb(220, 220, 220);
     background-color: white;
-
-
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 #back:hover{
-    background-color: rgb(235, 234, 234);
-    cursor: pointer;
+    background-color: rgb(240, 240, 240);
+}
+
+/* responsive */
+
+@media(max-width: 700px){
+
+    .container{
+        padding: 0 15px;
+    }
+
+    .heading h2{
+        font-size: 28px;
+    }
+
+    .input-name{
+        flex-direction: column;
+    }
+
+    .dob-selects{
+        flex-direction: column;
+    }
 }
 

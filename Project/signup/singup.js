@@ -1,63 +1,122 @@
-// document.addEventListener("DOMContentLoaded", function () {
+// console.log("conected")
 
-//   // MONTH
-//   let selectOption = document.getElementById("month");
+let submitBtn = document.getElementById("submit");
 
-//   let months = [
-//     "January","February","March","April",
-//     "May","June","July","August",
-//     "September","October","November","December"
-//   ];
+submitBtn.addEventListener("click", function(e) {
+  e.preventDefault();
 
-//   let monthDefault = document.createElement("option");
-//   monthDefault.text = "Month";
-//   monthDefault.disabled = true;
-//   monthDefault.selected = true;
-//   selectOption.appendChild(monthDefault);
-
-//   for (let i = 0; i < months.length; i++) {
-//     let option = document.createElement("option");
-//     option.value = months[i];
-//     option.text = months[i];
-//     selectOption.appendChild(option);
-//   }
+let firstName = document.getElementById("first-name");
+let lastName = document.getElementById("last-name");
+let gender = document.getElementById("gender");
+let date = document.getElementById("date");
+let month = document.getElementById("month");
+let year = document.getElementById("year");
+let email = document.getElementById("email");
+let password = document.getElementById("password");
+let eyeIcon = document.getElementById("eyeIcon")
 
 
-//   // DAY
-//   let daySelect = document.getElementById("day");
-
-//   let dayDefault = document.createElement("option");
-//   dayDefault.text = "Select Day";
-//   dayDefault.disabled = true;
-//   dayDefault.selected = true;
-//   daySelect.appendChild(dayDefault);
-
-//   for (let i = 1; i <= 31; i++) {
-//     let option = document.createElement("option");
-//     option.value = i;
-//     option.text = i;
-//     daySelect.appendChild(option);
-//   }
-
-//   let year = document.getElementById("year")
-
-//   let defaultYear = document.createElement("option");
-//   defaultYear.text = "year";
-//   defaultYear.disabled = true;
-//   defaultYear.selected = true;
-//   year.appendChild(defaultYear);
-
-//   let currentYear = new Date().getFullYear();
-
-//   for(let y = currentYear;y >= 1900 ;y-- ){
-//     let option = document.createElement("option")
-//     option.value = y;
-//     option.text = y;
-//     year.appendChild(option);
-//   }
-  
-
-// });
 
 
-console.log("ma cahal")
+let dob = `${date},${month},${year}`;
+
+// logics
+
+if(firstName.value.trim() == ""){
+    Swal.fire({
+  icon: "error",
+  title: "Oops...",
+  text: "First name required"
+})
+} else if(lastName.value.trim() == ""){
+      Swal.fire({
+  icon: "error",
+  title: "Oops...",
+  text: "Last name required"
+});
+} else if(gender.value == ""){
+      Swal.fire({
+  icon: "error",
+  title: "Oops...",
+  text: "Gender required"
+});
+} else if(dob == date.value == "" || month.value == "" || year.value == ""){
+      Swal.fire({
+  icon: "error",
+  title: "Oops...",
+  text: "Date of birth required"
+});
+} else if(email.value.trim() == ""){
+      Swal.fire({
+  icon: "error",
+  title: "Oops...",
+  text: "Email required"
+});
+}else if(!email.value.includes("@")){
+
+      Swal.fire({
+      title: "Error",
+      text: "Invalid Email",
+      icon: "error"
+});
+
+} else if(password.value.length < 8){
+      Swal.fire({
+      icon: "error",
+      title: "",
+      text: "Password must be at least 8 characters long"
+});
+}else {
+
+  let userData = {
+    firstName: firstName.value,
+    lastName: lastName.value,
+    dateOfBirth: dob,
+    gender: gender.value,
+    email: email.value,
+    password: password.value
+  };
+
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+
+  users.push(userData);
+
+  localStorage.setItem("users", JSON.stringify(users));
+
+  Swal.fire({
+    icon: "success",
+    title: "Congratulations",
+    text: "Your account has been created successfully"
+  });
+
+  setTimeout(() => {
+    window.location.href = "../login.html";
+  }, 2000);
+
+}
+});
+
+
+let eyeIcon = document.getElementById("eyeIcon");
+let password = document.getElementById("password");
+
+eyeIcon.addEventListener("click", function () {
+
+  if (password.type === "password") {
+    password.type = "text";
+    eyeIcon.classList.replace("fa-eye", "fa-eye-slash");
+  } else {
+    password.type = "password";
+    eyeIcon.classList.replace("fa-eye-slash", "fa-eye");
+  }
+
+});
+
+
+
+document.getElementById("back").addEventListener("click",function(){
+  window.location.href = "../login.html"
+});
+
+
+

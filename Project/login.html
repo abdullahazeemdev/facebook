@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="login.css">
     <title>Facebook Login</title>
 </head>
@@ -17,7 +18,10 @@
     <div class="right">
         <form>
             <input id="email" type="text" placeholder="Email or phone number" autocomplete="username">
-            <input id="password" type="password" placeholder="Password" autocomplete="current-password">
+            <div class="password-box">
+             <input id="password" type="password" placeholder="Password" autocomplete="current-password" >
+             <i class="fa-solid fa-eye" id="eyeIcon"></i>
+            </div>
             <button type="submit" id="login">Log In</button>
         </form>
 
