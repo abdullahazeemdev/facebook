@@ -3,9 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <link rel="stylesheet" href="dashbaord.css">
     <title>facebook dashboard</title>
+
 </head>
 <body>
-    <h3>Welcome to your Facebook Dashboard!</h3>
+    <!-- navbar -->
+    <div class="navbar">
+     <div class="left">
+      <i class="fa-brands fa-facebook"></i>
+      <div class="search-bar">
+        <label for="input"><i class="fa-solid fa-magnifying-glass"></i></label>
+        <input type="text" placeholder="search friendbooks">
+      </div>
+     </div>
+
+     <div class="center">
+        
+       <div class="center">
+
+    <div class="nav-icon active">
+        <i class="fa-solid fa-house"></i>
+    </div>
+
+    <div class="nav-icon">
+        <i class="fa-solid fa-clapperboard"></i>
+    </div>
+
+    <div class="nav-icon">
+        <i class="fa-regular fa-square-plus"></i>
+    </div>
+
+    <div class="nav-icon">
+        <i class="fa-solid fa-user"></i>
+    </div>
+
+    <div class="nav-icon">
+        <i class="fa-solid fa-store"></i>
+    </div>
+
+</div>
+
+     </div>
+
+
+     <div class="right">
+        <i class="fa-solid fa-bars"></i>
+        <i class="fa-brands fa-facebook-messenger"></i>
+        <i class="fa-solid fa-bell"></i>
+       <div class="profile-icon" id="profileBtn">
+
+    <i class="fa-solid fa-circle-user"></i>
+
+    <div class="arrow">
+        <i class="fa-solid fa-chevron-down"></i>
+    </div>
+
+</div>
+
+<!-- DROPDOWN -->
+
+<div class="profile-menu" id="profileMenu">
+
+    <div class="profile-top">
+        <i class="fa-solid fa-circle-user"></i>
+        <h3>عبدالله عظیم</h3>
+    </div>
+
+    <hr>
+
+    <button>⚽ See all profiles</button>
+
+    <div class="menu-item">
+        <i class="fa-solid fa-gear"></i>
+        <span>Settings & privacy</span>
+    </div>
+
+    <div class="menu-item">
+        <i class="fa-solid fa-circle-question"></i>
+        <span>Help & support</span>
+    </div>
+
+    <div class="menu-item">
+        <i class="fa-solid fa-circle-exclamation"></i>
+        <span>Report a problem</span>
+    </div>
+
+    <div class="menu-item">
+        <i class="fa-solid fa-moon"></i>
+        <span>Display & accessibility</span>
+    </div>
+
+    <div class="menu-item" id="logOut">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        <span>Log out</span>
+    </div>
+
+</div>
+       </div>
+     </div>
+    </div>
+
+   
+<script src="app.js"></script>
 </body>
 </html>

@@ -18,7 +18,7 @@ let eyeIcon = document.getElementById("eyeIcon")
 
 
 
-let dob = `${date},${month},${year}`;
+let dob = `${date.value},${month.value},${year.value}`;
 
 // logics
 
@@ -34,17 +34,18 @@ if(firstName.value.trim() == ""){
   title: "Oops...",
   text: "Last name required"
 });
+
+} else if (date.value == "" ||month.value == "" ||year.value == "") {
+  Swal.fire({
+  icon: "error",
+  title: "Oops...",
+  text: "Date of birth required"
+});
 } else if(gender.value == ""){
       Swal.fire({
   icon: "error",
   title: "Oops...",
   text: "Gender required"
-});
-} else if(dob == date.value == "" || month.value == "" || year.value == ""){
-      Swal.fire({
-  icon: "error",
-  title: "Oops...",
-  text: "Date of birth required"
 });
 } else if(email.value.trim() == ""){
       Swal.fire({
@@ -90,15 +91,15 @@ if(firstName.value.trim() == ""){
   });
 
   setTimeout(() => {
-    window.location.href = "../login.html";
+    window.location.replace = "../login.html";
   }, 2000);
 
 }
 });
 
 
-let eyeIcon = document.getElementById("eyeIcon");
-let password = document.getElementById("password");
+// let eyeIcon = document.getElementById("eyeIcon");
+// let password = document.getElementById("password");
 
 eyeIcon.addEventListener("click", function () {
 
@@ -115,7 +116,7 @@ eyeIcon.addEventListener("click", function () {
 
 
 document.getElementById("back").addEventListener("click",function(){
-  window.location.href = "../login.html"
+  window.location.replace = "../login.html"
 });
 
 
