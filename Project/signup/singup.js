@@ -91,7 +91,7 @@ if(firstName.value.trim() == ""){
   });
 
   setTimeout(() => {
-    window.location.replace = "../login.html";
+    window.location.replace("../login.html");
   }, 2000);
 
 }
@@ -116,7 +116,7 @@ eyeIcon.addEventListener("click", function () {
 
 
 document.getElementById("back").addEventListener("click",function(){
-  window.location.replace = "../login.html"
+  window.location.replace("../login.html");
 });
 
 

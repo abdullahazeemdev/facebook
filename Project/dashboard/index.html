@@ -1,111 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-     <link rel="stylesheet" href="dashbaord.css">
-    <title>facebook dashboard</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Facebook Dashboard</title>
 
+  <link rel="stylesheet" href="dashbaord.css" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 </head>
 <body>
-    <!-- navbar -->
-    <div class="navbar">
-     <div class="left">
+
+<!-- NAVBAR -->
+<nav class="navbar">
+
+  <div class="nav-left">
+    <div class="logo">
       <i class="fa-brands fa-facebook"></i>
-      <div class="search-bar">
-        <label for="input"><i class="fa-solid fa-magnifying-glass"></i></label>
-        <input type="text" placeholder="search friendbooks">
-      </div>
-     </div>
-
-     <div class="center">
-        
-       <div class="center">
-
-    <div class="nav-icon active">
-        <i class="fa-solid fa-house"></i>
     </div>
 
-    <div class="nav-icon">
-        <i class="fa-solid fa-clapperboard"></i>
+    <div class="search-box">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" placeholder="Search Facebook" />
+    </div>
+  </div>
+
+  <div class="nav-center">
+    <div class="nav-icon active"><i class="fa-solid fa-house"></i></div>
+    <div class="nav-icon"><i class="fa-solid fa-video"></i></div>
+    <div class="nav-icon"><i class="fa-solid fa-store"></i></div>
+    <div class="nav-icon"><i class="fa-solid fa-users"></i></div>
+    <div class="nav-icon"><i class="fa-solid fa-gamepad"></i></div>
+  </div>
+
+  <div class="nav-right">
+
+    <div class="nav-right-icon">
+      <i class="fa-solid fa-bars"></i>
     </div>
 
-    <div class="nav-icon">
-        <i class="fa-regular fa-square-plus"></i>
+    <div class="nav-right-icon">
+      <i class="fa-brands fa-facebook-messenger"></i>
     </div>
 
-    <div class="nav-icon">
-        <i class="fa-solid fa-user"></i>
+    <div class="nav-right-icon">
+      <i class="fa-solid fa-bell"></i>
     </div>
 
-    <div class="nav-icon">
-        <i class="fa-solid fa-store"></i>
+    <div class="profile" id="profileBtn">
+      <img src="/images/IMG-20260430-WA0021.jpg" alt="">
     </div>
 
-</div>
+  </div>
 
-     </div>
-
-
-     <div class="right">
-        <i class="fa-solid fa-bars"></i>
-        <i class="fa-brands fa-facebook-messenger"></i>
-        <i class="fa-solid fa-bell"></i>
-       <div class="profile-icon" id="profileBtn">
-
-    <i class="fa-solid fa-circle-user"></i>
-
-    <div class="arrow">
-        <i class="fa-solid fa-chevron-down"></i>
-    </div>
-
-</div>
+</nav>
 
 <!-- DROPDOWN -->
+<div class="dropdown-menu" id="dropdownMenu">
 
-<div class="profile-menu" id="profileMenu">
-
-    <div class="profile-top">
-        <i class="fa-solid fa-circle-user"></i>
-        <h3>عبدالله عظیم</h3>
+  <div class="dropdown-profile">
+    <img src="/images/IMG-20260430-WA0021.jpg" alt="">
+    <div>
+      <h4>Abdullah Azeem</h4>
+      <p>See your profile</p>
     </div>
+  </div>
 
-    <hr>
+  <hr>
 
-    <button>⚽ See all profiles</button>
+  <div class="dropdown-item">
+    <i class="fa-solid fa-gear"></i>
+    <span>Settings & Privacy</span>
+  </div>
 
-    <div class="menu-item">
-        <i class="fa-solid fa-gear"></i>
-        <span>Settings & privacy</span>
-    </div>
+  <div class="dropdown-item">
+    <i class="fa-solid fa-circle-question"></i>
+    <span>Help & Support</span>
+  </div>
 
-    <div class="menu-item">
-        <i class="fa-solid fa-circle-question"></i>
-        <span>Help & support</span>
-    </div>
-
-    <div class="menu-item">
-        <i class="fa-solid fa-circle-exclamation"></i>
-        <span>Report a problem</span>
-    </div>
-
-    <div class="menu-item">
-        <i class="fa-solid fa-moon"></i>
-        <span>Display & accessibility</span>
-    </div>
-
-    <div class="menu-item" id="logOut">
-        <i class="fa-solid fa-right-from-bracket"></i>
-        <span>Log out</span>
-    </div>
+  <div class="dropdown-item logout">
+    <i class="fa-solid fa-right-from-bracket"></i>
+    <span>Log Out</span>
+  </div>
 
 </div>
-       </div>
-     </div>
+
+<!-- MAIN -->
+<div class="main-container">
+
+  <!-- LEFT SIDEBAR -->
+  <div class="left-sidebar">
+    <div class="sidebar-item">
+      <img src="/images/IMG-20260430-WA0021.jpg" alt="">
+      <span>Abdullah Azeem</span>
     </div>
 
-   
+    <div class="sidebar-item"><i class="fa-solid fa-user-group"></i> Friends</div>
+    <div class="sidebar-item"><i class="fa-solid fa-clock"></i> Memories</div>
+    <div class="sidebar-item"><i class="fa-solid fa-bookmark"></i> Saved</div>
+    <div class="sidebar-item"><i class="fa-solid fa-users"></i> Groups</div>
+    <div class="sidebar-item"><i class="fa-solid fa-video"></i> Videos</div>
+  </div>
+
+  <!-- CENTER -->
+  <div class="feed-section">
+
+    <!-- STORIES -->
+    <div class="stories">
+
+      <div class="story-card" id="openStory">
+        <img src="/images/IMG-20251018-WA0031.jpg">
+        <p>Create Story</p>
+      </div>
+
+      <div class="story-card">
+        <img src="https://picsum.photos/400/400?random=7">
+        <p>Ali</p>
+      </div>
+
+      <div class="story-card">
+        <img src="https://picsum.photos/400/400?random=5">
+        <p>Ahmed</p>
+      </div>
+
+      <div class="story-card">
+        <img src="https://picsum.photos/400/400?random=6">
+        <p>Hamza</p>
+      </div>
+
+       <div class="story-card">
+        <img src="https://picsum.photos/400/400?random=4">
+        <p>usama</p>
+      </div>
+
+       <div class="story-card">
+        <img src="https://picsum.photos/400/400?random=3">
+        <p>daniyal</p>
+      </div>
+
+       <div class="story-card">
+        <img src="https://picsum.photos/400/400?random=2">
+        <p>maryam</p>
+      </div>
+
+    </div>
+
+    <!-- CREATE POST -->
+    <div class="create-post">
+
+      <div class="post-top">
+        <img src="https://i.pravatar.cc/150?img=12" alt="">
+
+        <input type="text" placeholder="What's on your mind?" id="postInput">
+      </div>
+
+      <hr>
+
+      <div class="post-options">
+        <div class="option"><i class="fa-solid fa-video"></i> Live Video</div>
+        <div class="option"><i class="fa-solid fa-image"></i> Photo/Video</div>
+        <div class="option"><i class="fa-regular fa-face-smile"></i> Feeling</div>
+      </div>
+
+      <!-- 🔥 ADDED: IMAGE UPLOAD -->
+      <input type="file" id="postImage" accept="image/*">
+
+      <!-- 🔥 ADDED: POST BUTTON -->
+      <button id="postBtn">Post</button>
+
+    </div>
+
+    <!-- POSTS -->
+    <div id="postsContainer"></div>
+
+  </div>
+
+  <!-- RIGHT SIDEBAR -->
+  <div class="right-sidebar">
+    <h3>Contacts</h3>
+
+    <div class="contact"><img src="https://i.pravatar.cc/150?img=31"><span>Ahmed</span></div>
+    <div class="contact"><img src="https://i.pravatar.cc/150?img=45"><span>Hamza</span></div>
+    <div class="contact"><img src="https://i.pravatar.cc/150?img=50"><span>Usman</span></div>
+    <div class="contact"><img src="https://i.pravatar.cc/150?img=55"><span>Talha</span></div>
+
+  </div>
+
+</div>
+
 <script src="app.js"></script>
 </body>
 </html>
