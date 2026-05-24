@@ -29,7 +29,6 @@ const logoutBtn = document.querySelector(".logout");
 
 if (logoutBtn) {
   logoutBtn.addEventListener("click", () => {
-    localStorage.clear();
 
     window.location.replace("/login.html");
   });
