@@ -69,7 +69,7 @@ function renderPosts() {
 
     postDiv.innerHTML = `
       <div class="post-header">
-        <img src="https://i.pravatar.cc/150?img=12">
+        <img src="/images/IMG-20260430-WA0021.jpg">
         <div>
           <h4>You</h4>
           <p>Just now</p>
