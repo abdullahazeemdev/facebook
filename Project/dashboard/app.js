@@ -1,250 +1,221 @@
-
-// current user
-
-let currentUser = JSON.parse(
-  localStorage.getItem("currentUser")
-);
-
-// login check
+/* ================= INITIALIZATION ================= */
+let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+let users = JSON.parse(localStorage.getItem("users")) || [];
 
 if (!currentUser) {
-
   window.location.replace("../login.html");
-
 }
 
-
-// element
-
-const profileBtn = document.getElementById("profileBtn");
-
-const dropdownMenu = document.getElementById("dropdownMenu");
-
-const dropdownProfile = document.querySelector(".dropdown-profile");
-
-const profileImage = document.getElementById("profileImage");
-
-const imageInput = document.getElementById("imageInput");
-
-const profileName = document.getElementById("dropdownName");
-
-const sliderName = document.getElementById("sidebarName");
-
-const sliderImg = document.getElementById("slidebar-img");
-
-const navProfileImg = document.getElementById("navProfileImg");
-
-const postProfileImg = document.getElementById("postProfileImg");
-
-const logout = document.querySelector(".logout");
-
-// user data 
-
-profileName.innerText =`${currentUser.firstName} ${currentUser.lastName}`;
-
-sliderName.innerText =`${currentUser.firstName} ${currentUser.lastName}`;
-
-
-
-// profile image
-
-if (currentUser.profilePic) {
-
-  profileImage.src = currentUser.profilePic;
-
-  sliderImg.src = currentUser.profilePic;
-
-  navProfileImg.src = currentUser.profilePic;
-
-  postProfileImg.src = currentUser.profilePic;
-
-
+/* ================= CORE HELPERS ================= */
+function saveUser() {
+  const i = users.findIndex(u => u.email === currentUser.email);
+  if (i !== -1) {
+    users[i] = currentUser;
+    localStorage.setItem("users", JSON.stringify(users));
+    localStorage.setItem("currentUser", JSON.stringify(currentUser));
+  }
 }
 
+function updateUI() {
+  const img = currentUser.profilePic || "/images/download.jfif";
+  
+  // Set Profile Names
+  document.getElementById("dropdownName").innerText = `${currentUser.firstName} ${currentUser.lastName}`;
+  document.getElementById("sidebarName").innerText = `${currentUser.firstName} ${currentUser.lastName}`;
 
-// dropdown
-
-profileBtn.addEventListener("click",function(e){
-
-e.preventDefault();
-
-dropdownMenu.classList.toggle("active");
-
-});
-
-window.addEventListener("click",function(e){
-
-if(!profileBtn.contains(e.target) && !dropdownMenu.contains(e.target)){
-
-dropdownMenu.classList.remove(
-"active"
-);
-
+  // Set Profile Images
+  const images = ["navProfileImg", "slidebar-img", "postProfileImg", "profileImage"];
+  images.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.src = img;
+  });
 }
 
-});
-
-
-// profile pic uplaod
-
-dropdownProfile.addEventListener("click",function(e){
-
-e.stopPropagation();
-
-imageInput.click();
-
-}
-
-);
-
-imageInput.addEventListener("change",function(e){
-
-const file = e.target.files[0];
-
-if(!file){
-
-return;
-
-}
-
-const reader = new FileReader();
-
-reader.onload = function(e){
-
-const image = e.target.result;
-
-
-// current user update
-
-currentUser.profilePic = image;
-
-
-// save current user
-
-localStorage.setItem("currentUser",JSON.stringify(currentUser));
-
-
-// users update
-
-let users =JSON.parse(localStorage.getItem("users")) || [];
-
-
-for(let i = 0;i < users.length;i++){
-    
-    if(users[i].email === currentUser.email){
-
-   users[i].profilePic = image;
-
-break;
-
-}
-
-}
-
-
-// users save
-
-localStorage.setItem("users",JSON.stringify(users));
-
-
-// show image everywhere
-
-profileImage.src = image;
-
-sliderImg.src = image;
-
-navProfileImg.src = image;
-
-postProfileImg.src = newImage;
-
-
-// close dropdown
-
-dropdownMenu.classList.remove("active");
-
-};
-
-
-reader.readAsDataURL(file);
-
-});
-
-// LOGOUT
-
-logout.addEventListener("click",function(e){
-
-e.preventDefault();
-
-localStorage.removeItem("currentUser");
-
-window.location.replace("../login.html");
-
-}
-
-);
-
-// create story
-
+/* ================= STORY LOGIC ================= */
 const openStory = document.getElementById("openStory");
 const storyInput = document.getElementById("storyInput");
-const storiesContainer = document.querySelector(".stories");
 
-// sirf 1 story store hogi
-let stories = JSON.parse(localStorage.getItem("stories")) || [];
+if (openStory) {
+  openStory.onclick = () => storyInput.click();
+  storyInput.addEventListener("change", function () {
+    const file = this.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      currentUser.story = { type: file.type.startsWith("video") ? "video" : "image", url: e.target.result };
+      saveUser();
+      renderStory();
+    };
+    reader.readAsDataURL(file);
+  });
+}
 
-// Create Story click
-openStory.addEventListener("click", function () {
-  storyInput.click();
+function renderStory() {
+  const storyList = document.getElementById("storyList");
+  if (!storyList || !currentUser.story) return;
+  storyList.innerHTML = `
+    <div class="story-card dynamic-story">
+      ${currentUser.story.type === "image" 
+        ? `<img src="${currentUser.story.url}">` 
+        : `<video src="${currentUser.story.url}" muted autoplay></video>`}
+    </div>`;
+}
+
+/* ================= POST LOGIC ================= */
+const postBtn = document.getElementById("postBtn");
+const postInput = document.getElementById("postInput");
+const postImage = document.getElementById("postImage");
+
+postBtn.onclick = () => {
+  const text = postInput.value.trim();
+  const file = postImage.files[0];
+  if (!text && !file) return alert("Kuch likhein ya image select karein!");
+
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = (e) => createPost(text, e.target.result);
+    reader.readAsDataURL(file);
+  } else {
+    createPost(text, null);
+  }
+};
+
+function createPost(text, imgUrl) {
+  if (!currentUser.posts) currentUser.posts = [];
+  currentUser.posts.unshift({ text, image: imgUrl, likes: 0, comments: [] });
+  saveUser();
+  renderPosts();
+  postInput.value = "";
+  postImage.value = "";
+}
+
+function renderPosts() {
+  const container = document.getElementById("postsContainer");
+  if (!container) return;
+  container.innerHTML = "";
+  (currentUser.posts || []).forEach((post, index) => {
+    container.innerHTML += `
+      <div class="post-card">
+        <div class="post-header">
+          <img src="${currentUser.profilePic || '/images/download.jfif'}">
+          <b>${currentUser.firstName} ${currentUser.lastName}</b>
+        </div>
+        <p>${post.text}</p>
+        ${post.image ? `<img class="post-image" src="${post.image}">` : ""}
+        <div class="post-actions">
+          <button onclick="likePost(${index})">👍 ${post.likes}</button>
+          <button onclick="commentPost(${index})">💬 Comment</button>
+          <button onclick="editPost(${index})">✏️ Edit</button>
+          <button onclick="deletePost(${index})">🗑 Delete</button>
+        </div>
+      </div>`;
+  });
+}
+
+/* ================= ACTIONS & THEME ================= */
+window.likePost = (i) => { currentUser.posts[i].likes++; saveUser(); renderPosts(); };
+window.editPost = (i) => { 
+    const newText = prompt("Edit post:", currentUser.posts[i].text); 
+    if (newText !== null) { currentUser.posts[i].text = newText; saveUser(); renderPosts(); } 
+};
+window.deletePost = (i) => { currentUser.posts.splice(i, 1); saveUser(); renderPosts(); };
+
+// Dark Mode
+document.getElementById("darkToggle")?.addEventListener("click", () => {
+  currentUser.darkMode = !currentUser.darkMode;
+  saveUser();
+  document.body.classList.toggle("dark", currentUser.darkMode);
 });
 
-// file upload
-storyInput.addEventListener("change", function () {
+// Dropdown
+const profileBtn = document.getElementById("profileBtn");
+const dropdownMenu = document.getElementById("dropdownMenu");
+profileBtn?.addEventListener("click", (e) => { e.stopPropagation(); dropdownMenu.classList.toggle("active"); });
+window.addEventListener("click", () => dropdownMenu?.classList.remove("active"));
 
+// INIT
+updateUI();
+document.body.classList.toggle("dark", currentUser.darkMode || false);
+renderStory();
+renderPosts();
+
+/* Add this inside the "ACTIONS & THEME" section */
+// Logout logic
+const logoutBtn = document.querySelector(".logout");
+
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", () => {
+    // 1. Remove current user from local storage
+    localStorage.removeItem("currentUser");
+    
+    // 2. Redirect to login page
+    window.location.replace("../login.html");
+  });
+}
+
+/* ================= PROFILE PICTURE UPLOAD LOGIC ================= */
+const imageInput = document.getElementById("imageInput");
+const profileImage = document.getElementById("profileImage");
+
+// Jab dropdown mein profile picture par click ho
+profileImage.onclick = () => imageInput.click();
+
+// Jab file select ho jaye
+imageInput.addEventListener("change", function () {
   const file = this.files[0];
   if (!file) return;
 
   const reader = new FileReader();
-
   reader.onload = function (e) {
-
-    const story = {
-      type: file.type.startsWith("video") ? "video" : "image",
-      url: e.target.result
-    };
-
-    // ONLY ONE STORY (replace old one)
-    stories = [story];
-
-    localStorage.setItem("stories", JSON.stringify(stories));
-
-    renderStories();
+    // 1. Current user object mein new URL save karein
+    currentUser.profilePic = e.target.result;
+    
+    // 2. Local Storage update karein
+    saveUser();
+    
+    // 3. UI update karein (taaki har jagah change ho jaye)
+    updateUI();
   };
-
   reader.readAsDataURL(file);
 });
+function updateUI() {
+  // Agar profilePic exist karti hai toh woh lein, warna default
+  const img = currentUser.profilePic || "/images/download.jfif";
+  
+  // Set Profile Names
+  const dropName = document.getElementById("dropdownName");
+  const sideName = document.getElementById("sidebarName");
+  if(dropName) dropName.innerText = `${currentUser.firstName} ${currentUser.lastName}`;
+  if(sideName) sideName.innerText = `${currentUser.firstName} ${currentUser.lastName}`;
 
-// render function
-function renderStories() {
-
-  // remove old dynamic stories only
-  document.querySelectorAll(".dynamic-story").forEach(el => el.remove());
-
-  if (stories.length > 0) {
-
-    const div = document.createElement("div");
-    div.classList.add("story-card", "dynamic-story");
-
-    const story = stories[0];
-
-    if (story.type === "image") {
-      div.innerHTML = `<img src="${story.url}">`;
-    } else {
-      div.innerHTML = `<video src="${story.url}" muted autoplay></video>`;
-    }
-
-    // insert after Create Story
-    storiesContainer.insertBefore(div, storiesContainer.children[1]);
-  }
+  // Har us jagah update karein jahan profile image hai
+  const images = ["navProfileImg", "slidebar-img", "postProfileImg", "profileImage"];
+  images.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.src = img;
+  });
 }
 
-renderStories();
+if (postBtn) {
+  postBtn.onclick = () => {
+    const text = postInput.value.trim();
+    const file = postImage.files[0];
+
+    if (!text && !file) {
+      return alert("Kuch likhein ya image select karein!");
+    }
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        createPost(text, e.target.result);
+      };
+
+      reader.readAsDataURL(file);
+
+    } else {
+      createPost(text, null);
+    }
+  };
+}

@@ -53,9 +53,10 @@
       <p>See your profile</p>
     </div>
   </div>
-
-  <div class="dropdown-item logout">
-    <i class="fa-solid fa-right-from-bracket"></i>
+  <hr>
+  <button id="darkToggle">🌙</button>
+  <div class="dropdown-item logout">   
+    <i class="fa-solid fa-right-from-bracket"></i>    
     <span>Logout</span>
   </div>
 
@@ -84,29 +85,16 @@
   <section class="feed-section">
 
     <!-- STORIES -->
-    <div class="stories" id="storiesContainer">
+    <div class="stories">
 
-      <!-- CREATE STORY -->
-      <div class="story-card story-upload" id="openStory">
+  <div class="story-card story-upload" id="openStory">
+    <img src="/images/download.jfif">
+    <p>Create Story</p>
+    <input type="file" id="storyInput" hidden>
+  </div>
 
-        <div class="plus-icon">
-         <i class="fa-solid fa-plus"></i>
-        </div>
-        <img src="/images/download.jfif" alt="Profile">
-        <p>Create Story</p>
-        <input type="file" id="storyInput" accept="image/*,video/*" hidden>
-    </div>
-
-      <!-- STATIC STORIES -->
-      <div class="story-card"><img src="https://picsum.photos/300?1"><p>Ali</p></div>
-      <div class="story-card"><img src="https://picsum.photos/300?2"><p>Ahmed</p></div>
-      <div class="story-card"><img src="https://picsum.photos/300?3"><p>Hamza</p></div>
-      <div class="story-card"><img src="https://picsum.photos/300?1"><p>Umar</p></div>
-      <div class="story-card"><img src="https://picsum.photos/300?2"><p>Khan</p></div>
-      <div class="story-card"><img src="https://picsum.photos/300?3"><p>Misba</p></div>
-
-      <!-- DYNAMIC STORIES (JS inject here) -->
-      <div id="storyList"></div>
+  <!-- dynamic stories yahan aayengi -->
+  <div id="storyList"></div>
 
     </div>
 
