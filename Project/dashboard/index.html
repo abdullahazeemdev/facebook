@@ -6,24 +6,20 @@
   <title>Facebook Dashboard</title>
 
   <link rel="stylesheet" href="dashbaord.css" />
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 </head>
+
 <body>
 
 <!-- NAVBAR -->
 <nav class="navbar">
 
   <div class="nav-left">
-    <div class="logo">
-      <i class="fa-brands fa-facebook"></i>
-    </div>
+    <div class="logo"><i class="fa-brands fa-facebook"></i></div>
 
     <div class="search-box">
       <i class="fa-solid fa-magnifying-glass"></i>
-      <input type="text" placeholder="Search Facebook" />
+      <input type="text" placeholder="Search Facebook">
     </div>
   </div>
 
@@ -32,121 +28,85 @@
     <div class="nav-icon"><i class="fa-solid fa-video"></i></div>
     <div class="nav-icon"><i class="fa-solid fa-store"></i></div>
     <div class="nav-icon"><i class="fa-solid fa-users"></i></div>
-    <div class="nav-icon"><i class="fa-solid fa-gamepad"></i></div>
   </div>
 
   <div class="nav-right">
-
-    <div class="nav-right-icon">
-      <i class="fa-solid fa-bars"></i>
-    </div>
-
-    <div class="nav-right-icon">
-      <i class="fa-brands fa-facebook-messenger"></i>
-    </div>
-
-    <div class="nav-right-icon">
-      <i class="fa-solid fa-bell"></i>
-    </div>
+    <div class="nav-right-icon"><i class="fa-solid fa-bars"></i></div>
+    <div class="nav-right-icon"><i class="fa-brands fa-facebook-messenger"></i></div>
+    <div class="nav-right-icon"><i class="fa-solid fa-bell"></i></div>
 
     <div class="profile" id="profileBtn">
-
-    <img src="/images/download.jfif" id="navProfileImg" alt="Profile">
-    
-    
+      <img src="/images/download.jfif" id="navProfileImg" alt="profile">
     </div>
   </div>
 
 </nav>
 
-<!-- DROPDOWN -->
+<!-- DROPDOWN (IMPORTANT FOR YOUR JS) -->
 <div class="dropdown-menu" id="dropdownMenu">
 
   <div class="dropdown-profile">
-    <img src="/images/download.jfif" alt="" id="profileImage">
-    <input type="file" id="imageInput" style="display: none;" accept="image/*">
+    <img src="/images/download.jfif" id="profileImage">
+    <input type="file" id="imageInput" hidden>
     <div>
-        <h4 id="dropdownName">Loading...</h4>
-         <p>See your profile</p>
+      <h4 id="dropdownName">Loading...</h4>
+      <p>See your profile</p>
     </div>
-</div>
-
-  <hr>
-
-  <div class="dropdown-item">
-    <i class="fa-solid fa-gear"></i>
-    <span>Settings & Privacy</span>
-  </div>
-
-  <div class="dropdown-item">
-    <i class="fa-solid fa-circle-question"></i>
-    <span>Help & Support</span>
   </div>
 
   <div class="dropdown-item logout">
     <i class="fa-solid fa-right-from-bracket"></i>
-    <span >Log Out</span>
+    <span>Logout</span>
   </div>
 
 </div>
 
 <!-- MAIN -->
-<div class="main-container">
+<main class="main-container">
 
-  <!-- LEFT SIDEBAR -->
-  <div class="left-sidebar">
+  <!-- LEFT -->
+  <aside class="left-sidebar">
+
     <div class="sidebar-item">
-      <img src="/images/download.jfif" alt="" id="slidebar-img">
+      <img src="/images/download.jfif" id="slidebar-img">
       <span id="sidebarName">Loading...</span>
     </div>
 
-    <div class="sidebar-item"><i class="fa-solid fa-user-group"></i> Friends</div>
-    <div class="sidebar-item"><i class="fa-solid fa-clock"></i> Memories</div>
-    <div class="sidebar-item"><i class="fa-solid fa-bookmark"></i> Saved</div>
-    <div class="sidebar-item"><i class="fa-solid fa-users"></i> Groups</div>
-    <div class="sidebar-item"><i class="fa-solid fa-video"></i> Videos</div>
-  </div>
+    <div class="sidebar-item"><i class="fa-solid fa-user-group"></i><span>Friends</span></div>
+    <div class="sidebar-item"><i class="fa-solid fa-clock"></i><span>Memories</span></div>
+    <div class="sidebar-item"><i class="fa-solid fa-bookmark"></i><span>Saved</span></div>
+    <div class="sidebar-item"><i class="fa-solid fa-users"></i><span>Groups</span></div>
+    <div class="sidebar-item"><i class="fa-solid fa-video"></i><span>Videos</span></div>
+
+  </aside>
 
   <!-- CENTER -->
-  <div class="feed-section">
+  <section class="feed-section">
 
     <!-- STORIES -->
-    <div class="stories">
+    <div class="stories" id="storiesContainer">
 
-      <div class="story-card" id="openStory">
-        <img src="/images/download.jfif">
+      <!-- CREATE STORY -->
+      <div class="story-card story-upload" id="openStory">
+
+        <div class="plus-icon">
+         <i class="fa-solid fa-plus"></i>
+        </div>
+        <img src="/images/download.jfif" alt="Profile">
         <p>Create Story</p>
-      </div>
+        <input type="file" id="storyInput" accept="image/*,video/*" hidden>
+    </div>
 
-      <div class="story-card">
-        <img src="https://picsum.photos/400/400?random=7">
-        <p>Ali</p>
-      </div>
+      <!-- STATIC STORIES -->
+      <div class="story-card"><img src="https://picsum.photos/300?1"><p>Ali</p></div>
+      <div class="story-card"><img src="https://picsum.photos/300?2"><p>Ahmed</p></div>
+      <div class="story-card"><img src="https://picsum.photos/300?3"><p>Hamza</p></div>
+      <div class="story-card"><img src="https://picsum.photos/300?1"><p>Umar</p></div>
+      <div class="story-card"><img src="https://picsum.photos/300?2"><p>Khan</p></div>
+      <div class="story-card"><img src="https://picsum.photos/300?3"><p>Misba</p></div>
 
-      <div class="story-card">
-        <img src="https://picsum.photos/400/400?random=5">
-        <p>Ahmed</p>
-      </div>
-
-      <div class="story-card">
-        <img src="https://picsum.photos/400/400?random=6">
-        <p>Hamza</p>
-      </div>
-
-       <div class="story-card">
-        <img src="https://picsum.photos/400/400?random=4">
-        <p>usama</p>
-      </div>
-
-       <div class="story-card">
-        <img src="https://picsum.photos/400/400?random=3">
-        <p>daniyal</p>
-      </div>
-
-       <div class="story-card">
-        <img src="https://picsum.photos/400/400?random=2">
-        <p>maryam</p>
-      </div>
+      <!-- DYNAMIC STORIES (JS inject here) -->
+      <div id="storyList"></div>
 
     </div>
 
@@ -154,9 +114,8 @@
     <div class="create-post">
 
       <div class="post-top">
-        <img src="/images/download.jfif" alt="">
-
-        <input type="text" placeholder="What's on your mind?" id="postInput">
+        <img src="/images/download.jfif" id="postProfileImg">
+        <input type="text" id="postInput" placeholder="What's on your mind?">
       </div>
 
       <hr>
@@ -164,13 +123,9 @@
       <div class="post-options">
         <div class="option"><i class="fa-solid fa-video"></i> Live Video</div>
         <div class="option"><i class="fa-solid fa-image"></i> Photo/Video</div>
-        <div class="option"><i class="fa-regular fa-face-smile"></i> Feeling</div>
       </div>
 
-      <!--  ADDED: IMAGE UPLOAD -->
       <input type="file" id="postImage" accept="image/*">
-
-      <!-- ADDED: POST BUTTON -->
       <button id="postBtn">Post</button>
 
     </div>
@@ -178,20 +133,21 @@
     <!-- POSTS -->
     <div id="postsContainer"></div>
 
-  </div>
+  </section>
 
-  <!-- RIGHT SIDEBAR -->
-  <div class="right-sidebar">
+  <!-- RIGHT -->
+  <aside class="right-sidebar">
+
     <h3>Contacts</h3>
 
     <div class="contact"><img src="https://i.pravatar.cc/150?img=31"><span>Ahmed</span></div>
     <div class="contact"><img src="https://i.pravatar.cc/150?img=45"><span>Hamza</span></div>
-    <div class="contact"><img src="https://i.pravatar.cc/150?img=50"><span>Usman</span></div>
-    <div class="contact"><img src="https://i.pravatar.cc/150?img=55"><span>Talha</span></div>
+    <div class="contact"><img src="https://i.pravatar.cc/150?img=30"><span>Misba</span></div>
+    <div class="contact"><img src="https://i.pravatar.cc/150?img=41"><span>Muhib</span></div>
 
-  </div>
+  </aside>
 
-</div>
+</main>
 
 <script src="app.js"></script>
 </body>

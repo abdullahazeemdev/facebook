@@ -1,349 +1,250 @@
-// --- 1. Global Variables & Elements ---
-let currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-// Security Check
-if (currentUser === null) {
-    window.location.replace("../login.html");
+// current user
+
+let currentUser = JSON.parse(
+  localStorage.getItem("currentUser")
+);
+
+// login check
+
+if (!currentUser) {
+
+  window.location.replace("../login.html");
+
 }
 
-// Elements (Saare pehle define kar dein)
+
+// element
+
 const profileBtn = document.getElementById("profileBtn");
-const dropdownMenu = document.getElementById("dropdownMenu");
-const dropdownProfile = document.querySelector(".dropdown-profile");
-const profileImage = document.getElementById("profileImage");
-const imageInput = document.getElementById("imageInput");
-const profileName = document.getElementById("dropdownName");
-const sliderName = document.getElementById("sidebarName");
-const sliderImg = document.getElementById("slidebar-img")
-const logout = document.querySelector(".logout")
 
-// --- 2. Initial Data Loading ---
-if (currentUser !== null) {
-    profileName.innerText = currentUser.firstName + " " + currentUser.lastName;
-    sliderName.innerText = currentUser.firstName + " " + currentUser.lastName;
-    
-    // Initial Profile Image Load
-    if (currentUser.profilePic) {
-        profileImage.src = currentUser.profilePic;
-        const navImage = document.querySelector("#profileBtn img");
-        if(navImage) navImage.src = currentUser.profilePic;
-    }
-    if(sliderImg && currentUser.profilePic){
-      sliderImg.src = currentUser.profilePic;
-    }
-    
+const dropdownMenu = document.getElementById("dropdownMenu");
+
+const dropdownProfile = document.querySelector(".dropdown-profile");
+
+const profileImage = document.getElementById("profileImage");
+
+const imageInput = document.getElementById("imageInput");
+
+const profileName = document.getElementById("dropdownName");
+
+const sliderName = document.getElementById("sidebarName");
+
+const sliderImg = document.getElementById("slidebar-img");
+
+const navProfileImg = document.getElementById("navProfileImg");
+
+const postProfileImg = document.getElementById("postProfileImg");
+
+const logout = document.querySelector(".logout");
+
+// user data 
+
+profileName.innerText =`${currentUser.firstName} ${currentUser.lastName}`;
+
+sliderName.innerText =`${currentUser.firstName} ${currentUser.lastName}`;
+
+
+
+// profile image
+
+if (currentUser.profilePic) {
+
+  profileImage.src = currentUser.profilePic;
+
+  sliderImg.src = currentUser.profilePic;
+
+  navProfileImg.src = currentUser.profilePic;
+
+  postProfileImg.src = currentUser.profilePic;
+
+
 }
 
-// --- 3. Dropdown Logic ---
-profileBtn.addEventListener("click", function(event) {
-    event.preventDefault();
-    dropdownMenu.classList.toggle("active");
+
+// dropdown
+
+profileBtn.addEventListener("click",function(e){
+
+e.preventDefault();
+
+dropdownMenu.classList.toggle("active");
+
 });
 
-window.addEventListener("click", function(event) {
-    if (!profileBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
-        dropdownMenu.classList.remove("active");
-    }
+window.addEventListener("click",function(e){
+
+if(!profileBtn.contains(e.target) && !dropdownMenu.contains(e.target)){
+
+dropdownMenu.classList.remove(
+"active"
+);
+
+}
+
 });
 
-// log out
 
-logout.addEventListener("click",function(event){
-   event.preventDefault();
-  //  remove current user
-  localStorage.removeItem("currentUser")
-  // user back
-  window.location.replace("../login.html")
-})
+// profile pic uplaod
+
+dropdownProfile.addEventListener("click",function(e){
+
+e.stopPropagation();
+
+imageInput.click();
+
+}
+
+);
+
+imageInput.addEventListener("change",function(e){
+
+const file = e.target.files[0];
+
+if(!file){
+
+return;
+
+}
+
+const reader = new FileReader();
+
+reader.onload = function(e){
+
+const image = e.target.result;
 
 
+// current user update
+
+currentUser.profilePic = image;
 
 
-// --- 5. Profile Pic Update Logic ---
-dropdownProfile.addEventListener("click", function(event) {
-    event.stopPropagation();
-    imageInput.click();
-});
+// save current user
 
-imageInput.addEventListener("change", function(event) {
-
-    const file = event.target.files[0];
-
-    if (file) {
+localStorage.setItem("currentUser",JSON.stringify(currentUser));
 
 
-        const reader = new FileReader();
+// users update
 
-       reader.onload = function(e) {
-    const newImage = e.target.result;
-    currentUser.profilePic = newImage;
+let users =JSON.parse(localStorage.getItem("users")) || [];
+
+
+for(let i = 0;i < users.length;i++){
     
-    // 1. Current Session Update
-    localStorage.setItem("currentUser", JSON.stringify(currentUser));
-    
-    // 2. Database (Users Array) Update (Sahi variable names ke saath)
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-    
-    for(let i = 0; i < users.length; i++) {
-        if (users[i].email === currentUser.email) {
-            users[i].profilePic = newImage;
-            localStorage.setItem("users", JSON.stringify(users));
-            break; 
-        }
-    }
+    if(users[i].email === currentUser.email){
 
-          profileImage.src = newImage;
-    const navImage = document.querySelector("#profileBtn img");
-    if (navImage) navImage.src = newImage;
-    if (sliderImg) sliderImg.src = newImage;
-    
-    dropdownMenu.classList.remove("active");
+   users[i].profilePic = image;
+
+break;
+
+}
+
+}
+
+
+// users save
+
+localStorage.setItem("users",JSON.stringify(users));
+
+
+// show image everywhere
+
+profileImage.src = image;
+
+sliderImg.src = image;
+
+navProfileImg.src = image;
+
+postProfileImg.src = newImage;
+
+
+// close dropdown
+
+dropdownMenu.classList.remove("active");
+
 };
 
-}
+
+reader.readAsDataURL(file);
+
 });
 
+// LOGOUT
 
+logout.addEventListener("click",function(e){
 
+e.preventDefault();
 
+localStorage.removeItem("currentUser");
 
+window.location.replace("../login.html");
 
+}
 
+);
 
+// create story
 
+const openStory = document.getElementById("openStory");
+const storyInput = document.getElementById("storyInput");
+const storiesContainer = document.querySelector(".stories");
 
+// sirf 1 story store hogi
+let stories = JSON.parse(localStorage.getItem("stories")) || [];
 
+// Create Story click
+openStory.addEventListener("click", function () {
+  storyInput.click();
+});
 
+// file upload
+storyInput.addEventListener("change", function () {
 
+  const file = this.files[0];
+  if (!file) return;
 
+  const reader = new FileReader();
 
+  reader.onload = function (e) {
 
+    const story = {
+      type: file.type.startsWith("video") ? "video" : "image",
+      url: e.target.result
+    };
 
+    // ONLY ONE STORY (replace old one)
+    stories = [story];
 
+    localStorage.setItem("stories", JSON.stringify(stories));
 
+    renderStories();
+  };
 
+  reader.readAsDataURL(file);
+});
 
+// render function
+function renderStories() {
 
+  // remove old dynamic stories only
+  document.querySelectorAll(".dynamic-story").forEach(el => el.remove());
 
+  if (stories.length > 0) {
 
+    const div = document.createElement("div");
+    div.classList.add("story-card", "dynamic-story");
 
+    const story = stories[0];
 
+    if (story.type === "image") {
+      div.innerHTML = `<img src="${story.url}">`;
+    } else {
+      div.innerHTML = `<video src="${story.url}" muted autoplay></video>`;
+    }
 
+    // insert after Create Story
+    storiesContainer.insertBefore(div, storiesContainer.children[1]);
+  }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // LOGOUT SYSTEM
-
-// const logoutBtn = document.querySelector(".logout");
-
-// if (logoutBtn) {
-//   logoutBtn.addEventListener("click", () => {
-
-//     window.location.replace("/login.html");
-//   });
-// }
-// // STORY CLICK SYSTEM
-
-
-// const storyCards = document.querySelectorAll(".story-card");
-
-// storyCards.forEach((story) => {
-//   story.addEventListener("click", () => {
-     
-//   });
-// });
-
-
-// // POSTS SYSTEM
-
-
-// const postBtn = document.getElementById("postBtn");
-// const postInput = document.getElementById("postInput");
-// const postImage = document.getElementById("postImage");
-// const postsContainer = document.getElementById("postsContainer");
-
-// let posts = JSON.parse(localStorage.getItem("posts")) || [];
-
-// // RENDER POSTS
-// function renderPosts() {
-
-//   postsContainer.innerHTML = "";
-
-//   posts.forEach((post, index) => {
-
-//     const postDiv = document.createElement("div");
-//     postDiv.classList.add("post-card");
-
-//     postDiv.innerHTML = `
-//       <div class="post-header">
-//         <img src="../image/downlaod.jfif">
-//         <div>
-//           <h4>You</h4>
-//           <p>Just now</p>
-//         </div>
-//       </div>
-
-//       <p class="post-text">${post.text || ""}</p>
-
-//       ${post.image ? `<img class="post-image" src="${post.image}">` : ""}
-
-//       <div class="post-actions">
-//         <div onclick="likePost(${index})">👍 Like (${post.likes})</div>
-//         <div onclick="deletePost(${index})">🗑 Delete</div>
-//       </div>
-//     `;
-
-//     postsContainer.prepend(postDiv);
-//   });
-
-//   localStorage.setItem("posts", JSON.stringify(posts));
-// }
-
-// //////////////////////////////
-// // ADD POST (TEXT + IMAGE)
-// //////////////////////////////
-
-// if (postBtn) {
-
-//   postBtn.addEventListener("click", () => {
-
-//     const text = postInput.value.trim();
-//     const file = postImage.files[0];
-
-//     if (!text && !file) {
-//       alert("Please write something or upload image!");
-//       return;
-//     }
-
-//     if (file) {
-
-//       const reader = new FileReader();
-
-//       reader.onload = function (e) {
-
-//         posts.unshift({
-//           text: text,
-//           image: e.target.result,
-//           likes: 0
-//         });
-
-//         renderPosts();
-//       };
-
-//       reader.readAsDataURL(file);
-
-//     } else {
-
-//       posts.unshift({
-//         text: text,
-//         image: "",
-//         likes: 0
-//       });
-
-//       renderPosts();
-//     }
-
-//     postInput.value = "";
-//     postImage.value = "";
-//   });
-// }
-
-// //////////////////////////////
-// // LIKE POST
-// //////////////////////////////
-
-// window.likePost = function (index) {
-//   posts[index].likes++;
-//   renderPosts();
-// };
-
-// //////////////////////////////
-// // DELETE POST
-// //////////////////////////////
-
-// window.deletePost = function (index) {
-//   posts.splice(index, 1);
-//   renderPosts();
-// };
-
-// //////////////////////////////
-// // INIT LOAD
-// //////////////////////////////
-
-// renderPosts();
+renderStories();
