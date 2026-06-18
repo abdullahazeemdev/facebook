@@ -219,3 +219,15 @@ if (postBtn) {
     }
   };
 }
+
+window.commentPost = (i) => {
+  const comment = prompt("inter comment:");
+
+  if (!comment) return;
+
+  currentUser.posts[i].comments.push(comment);
+
+  saveUser();
+
+  renderPosts();
+};
