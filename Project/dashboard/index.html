@@ -50,9 +50,11 @@
     </div>
 
     <div class="profile" id="profileBtn">
-      <img src="/images/IMG-20260430-WA0021.jpg" alt="">
-    </div>
 
+    <img src="/images/download.jfif" id="navProfileImg" alt="Profile">
+    
+    
+    </div>
   </div>
 
 </nav>
@@ -61,12 +63,13 @@
 <div class="dropdown-menu" id="dropdownMenu">
 
   <div class="dropdown-profile">
-    <img src="/images/IMG-20260430-WA0021.jpg" alt="">
+    <img src="/images/download.jfif" alt="" id="profileImage">
+    <input type="file" id="imageInput" style="display: none;" accept="image/*">
     <div>
-      <h4>Abdullah Azeem</h4>
-      <p>See your profile</p>
+        <h4 id="dropdownName">Loading...</h4>
+         <p>See your profile</p>
     </div>
-  </div>
+</div>
 
   <hr>
 
@@ -82,7 +85,7 @@
 
   <div class="dropdown-item logout">
     <i class="fa-solid fa-right-from-bracket"></i>
-    <span>Log Out</span>
+    <span >Log Out</span>
   </div>
 
 </div>
@@ -93,8 +96,8 @@
   <!-- LEFT SIDEBAR -->
   <div class="left-sidebar">
     <div class="sidebar-item">
-      <img src="/images/IMG-20260430-WA0021.jpg" alt="">
-      <span>Abdullah Azeem</span>
+      <img src="/images/download.jfif" alt="" id="slidebar-img">
+      <span id="sidebarName">Loading...</span>
     </div>
 
     <div class="sidebar-item"><i class="fa-solid fa-user-group"></i> Friends</div>
@@ -111,7 +114,7 @@
     <div class="stories">
 
       <div class="story-card" id="openStory">
-        <img src="/images/IMG-20251018-WA0031.jpg">
+        <img src="/images/download.jfif">
         <p>Create Story</p>
       </div>
 
@@ -151,7 +154,7 @@
     <div class="create-post">
 
       <div class="post-top">
-        <img src="/images/IMG-20260430-WA0021.jpg" alt="">
+        <img src="/images/download.jfif" alt="">
 
         <input type="text" placeholder="What's on your mind?" id="postInput">
       </div>
@@ -164,10 +167,10 @@
         <div class="option"><i class="fa-regular fa-face-smile"></i> Feeling</div>
       </div>
 
-      <!-- 🔥 ADDED: IMAGE UPLOAD -->
+      <!--  ADDED: IMAGE UPLOAD -->
       <input type="file" id="postImage" accept="image/*">
 
-      <!-- 🔥 ADDED: POST BUTTON -->
+      <!-- ADDED: POST BUTTON -->
       <button id="postBtn">Post</button>
 
     </div>

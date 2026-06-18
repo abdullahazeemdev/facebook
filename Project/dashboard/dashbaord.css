@@ -155,8 +155,13 @@ body {
 .profile img:hover{
   transform: scale(1.05);
 }
-
+#navProfileImg {
+    cursor: pointer;
+}
 /* ================= DROPDOWN ================= */
+.dropdown-profile{
+  cursor: pointer;
+}
 
 .dropdown-menu {
   width: 330px;
@@ -659,3 +664,54 @@ body {
     font-size: 14px;
   }
 }
+
+
+/* Ai */
+
+/* Custom Scrollbar for Chrome/Safari */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f0f2f5;
+}
+::-webkit-scrollbar-thumb {
+  background: #bcc0c4;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a8abad;
+}
+
+button:active, .option:active {
+  transform: scale(0.98);
+}
+
+.dropdown-menu {
+  /* ... existing code ... */
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.post-card {
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.post-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+.search-box input {
+  width: 220px;
+  transition: width 0.4s ease;
+}
+
+.search-box:focus-within input {
+  width: 280px; /* Expand on click */
+}
+
+#postBtn {
+  background-color:#1877f2;
+}
+

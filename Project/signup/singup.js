@@ -19,6 +19,7 @@ let eyeIcon = document.getElementById("eyeIcon")
 
 
 let dob = `${date.value},${month.value},${year.value}`;
+let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 // logics
 
@@ -61,6 +62,14 @@ if(firstName.value.trim() == ""){
       icon: "error"
 });
 
+}else if(!emailRegex.test(email.value)){
+  Swal.fire({
+    icon: "Error",
+    text :"Invalid Email Address", 
+    title: "error"
+});
+
+
 } else if(password.value.length < 8){
       Swal.fire({
       icon: "error",
@@ -78,6 +87,7 @@ if(firstName.value.trim() == ""){
     password: password.value
   };
 
+  // local storage users
   let users = JSON.parse(localStorage.getItem("users")) || [];
 
   users.push(userData);

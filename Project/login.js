@@ -27,13 +27,9 @@ if (loginBtn) {
         } else if (!email.includes("@")) {
             Swal.fire("Error", "Invalid Email", "error");
 
-        } else if (password.length < 8) {
-            Swal.fire("Error", "Password must be at least 8 characters long", "error");
+        }  else if (userFound) {
 
-        } else if (userFound) {
-
-            // SAVE SESSION USER
-            localStorage.setItem("user", JSON.stringify(userFound));
+            localStorage.setItem("currentUser", JSON.stringify(userFound));
 
             Swal.fire({
                 title: "Success",
@@ -46,7 +42,11 @@ if (loginBtn) {
             });
 
         } else {
-            Swal.fire("Error", "User not found", "error");
+            Swal.fire({
+                icon:"Error",
+                text: "User not found",
+                title: "error"
+            });
         }
     });
 }
